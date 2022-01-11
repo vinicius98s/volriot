@@ -12,8 +12,7 @@ fn fetch_an_integer(value: i32) -> Result<i32, String> {
     let mut con = client.get_connection().unwrap();
     let _: RedisResult<()> = con.set("my_key", value);
 
-    let value: RedisResult<i32> = con.get("my_key");
-    match value {
+    match con.get("my_key") {
         Ok(r) => Ok(r),
         Err(_) => Err("error".into())
     }
