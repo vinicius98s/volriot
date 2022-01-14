@@ -46,9 +46,9 @@ export default function Connections() {
       >
         <div
           ref={resizer}
-          className={`absolute ${
+          className={`${
             !isResizing && "opacity-30"
-          } hover:opacity-100 transition bg-indigo-500 w-1 h-full -right-1 top-0 cursor-e-resize`}
+          } absolute hover:opacity-100 transition bg-indigo-500 w-1 h-full -right-1 top-0 cursor-e-resize`}
         />
 
         <div className="flex items-center justify-between pl-4 py-3 bg-indigo-500">

@@ -7,7 +7,10 @@ const customStyles = {
     backgroundColor: "rgba(0, 0, 0, 0.5)",
   },
   content: {
-    minWidth: "400px",
+    minWidth: "420px",
+    padding: "1.8em 2em",
+    borderRadius: "0.5em",
+    borderWidth: "0.15em",
     backgroundColor: "rgb(17, 24, 39)",
     borderColor: "rgb(99, 102, 241)",
     top: "50%",

@@ -1,7 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./App";
 import { setAppElement } from "react-modal";
+
+import App from "./App";
 
 setAppElement("#root");
 
