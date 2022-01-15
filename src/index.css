@@ -3,5 +3,15 @@
 @tailwind utilities;
 
 * {
-  font-family: sans-serif;
+  @apply transition font-sans;
+}
+
+.gutter {
+  @apply dark:bg-gray-800 bg-gray-100 bg-no-repeat bg-center;
+}
+
+.gutter.gutter-horizontal {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg==");
+  opacity: 0.3;
+  cursor: col-resize;
 }

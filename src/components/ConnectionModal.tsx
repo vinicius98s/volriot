@@ -8,7 +8,7 @@ import { Input } from "@/components/Form";
 function Colors() {
   return (
     <>
-      <p className="text-white text-sm mb-1 cursor-default">Color</p>
+      <p className="dark:text-white text-sm mb-1 cursor-default">Color</p>
       <div className="flex justify-between">
         <div className="bg-indigo-500 w-8 h-8 rounded-full cursor-pointer" />
         <div className="bg-rose-500 w-8 h-8 rounded-full cursor-pointer" />
@@ -26,10 +26,12 @@ function Colors() {
 export default function ConnectionModal(props: Props) {
   return (
     <Modal {...props}>
-      <h1 className="text-lg text-white font-semibold mb-4">
+      <h1 className="text-lg dark:text-white font-semibold mb-4">
         Add new connection
       </h1>
+
       <Input className="mb-4" placeholder="localhost" id="name" label="Name" />
+
       <div className="flex mb-4">
         <Input
           className="mr-3"
@@ -39,13 +41,24 @@ export default function ConnectionModal(props: Props) {
         />
         <Input placeholder="6379" id="port" label="Port" />
       </div>
-      <Input
-        className="mb-4"
-        placeholder="••••••"
-        id="password"
-        label="Password"
-      />
+
+      <div className="flex mb-4">
+        <Input
+          className="mr-3"
+          placeholder="admin"
+          id="username"
+          label="Username"
+        />
+        <Input
+          placeholder="••••••"
+          id="password"
+          type="password"
+          label="Password"
+        />
+      </div>
+
       <Colors />
+
       <div className="flex mt-10">
         <Button>Test connection</Button>
         <div className="flex ml-auto">

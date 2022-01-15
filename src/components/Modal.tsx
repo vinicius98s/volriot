@@ -5,26 +5,19 @@ import { XIcon } from "@heroicons/react/outline";
 const customStyles = {
   overlay: {
     backgroundColor: "rgba(0, 0, 0, 0.5)",
-  },
-  content: {
-    minWidth: "420px",
-    padding: "1.8em 2em",
-    borderRadius: "0.5em",
-    borderWidth: "0.15em",
-    backgroundColor: "rgb(17, 24, 39)",
-    borderColor: "rgb(99, 102, 241)",
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
 };
 
 export default function Modal(props: Props) {
   return (
-    <ReactModal style={customStyles} {...props}>
+    <ReactModal
+      style={customStyles}
+      className="relative min-w-[520px] dark:bg-gray-900 bg-white px-6 py-8 rounded-lg border-indigo-500 border-2 outline-transparent"
+      {...props}
+    >
       <XIcon
         onClick={props.onRequestClose}
         className="w-6 h-6 hover:text-blue-500 text-gray-300 absolute right-2 top-2 cursor-pointer"

@@ -18,7 +18,7 @@ export default function Button({
 
   return (
     <button
-      className={`px-3 py-1.5 rounded-md transition text-white text-sm font-bold ${className} ${classNameVariant}`}
+      className={`px-3 py-1.5 rounded-md transition text-white text-sm font-bold outline-transparent ${className} ${classNameVariant}`}
       {...props}
     />
   );
