@@ -17,7 +17,8 @@
     "jsx": "react",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@bindings/*": ["./src-tauri/bindings/*"]
     }
   },
   "include": ["./src"]

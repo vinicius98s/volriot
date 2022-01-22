@@ -3,24 +3,12 @@
   windows_subsystem = "windows"
 )]
 
-extern crate redis;
-use redis::{Commands, RedisResult};
-
-#[tauri::command]
-fn fetch_an_integer(value: i32) -> Result<i32, String> {
-    let client = redis::Client::open("redis://127.0.0.1/").unwrap();
-    let mut con = client.get_connection().unwrap();
-    let _: RedisResult<()> = con.set("my_key", value);
-
-    match con.get("my_key") {
-        Ok(r) => Ok(r),
-        Err(_) => Err("error".into())
-    }
-}
+mod redis;
+use crate::redis::test_connection;
 
 fn main() {
   tauri::Builder::default()
-      .invoke_handler(tauri::generate_handler![fetch_an_integer])
+    .invoke_handler(tauri::generate_handler![test_connection])
     .run(tauri::generate_context!())
     .expect("error while running tauri application");
 }
