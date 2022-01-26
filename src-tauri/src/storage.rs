@@ -3,6 +3,7 @@ use serde_json::Value as JsonValue;
 use std::fs::{create_dir_all, read, write};
 use std::path::PathBuf;
 use tauri::api::path::local_data_dir;
+use ts_rs::TS;
 
 pub struct StoragePath(pub PathBuf);
 
@@ -14,10 +15,18 @@ impl StoragePath {
   }
 }
 
-#[derive(serde::Serialize, Debug)]
-pub struct StorageData {
-  pub data: serde_json::Value,
-  pub status: bool,
+/// TypeScript interfaces for writing/reading data
+#[derive(TS)]
+#[ts(export)]
+pub struct WriteStorageData<T> {
+  pub key: String,
+  pub value: T,
+}
+
+#[derive(TS)]
+#[ts(export)]
+pub struct ReadStorageData {
+  pub key: String,
 }
 
 #[tauri::command]
