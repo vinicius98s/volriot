@@ -28,7 +28,7 @@ export default function Connections() {
         onRequestClose={() => setIsModalOpen(false)}
       />
 
-      <div className="shadow-xl h-full min-w-64 relative select-none">
+      <div className="shadow-xl h-full min-w-fit max-w-sm w-1/3 relative select-none">
         <div className="flex items-center justify-between pl-4 py-3 bg-indigo-500">
           <h1 className="text-white font-bold">Connections</h1>
           <PlusCircleIcon
@@ -54,7 +54,7 @@ export default function Connections() {
                 {connection.address}:{connection.port}
               </p>
             </div>
-            <CogIcon className="h-5 w-5 hover:text-blue-400 text-gray-400 cursor-pointer mr-4" />
+            <CogIcon className="h-5 w-5 hover:text-blue-400 text-gray-400 cursor-pointer mr-4 ml-8" />
           </button>
         ))}
       </div>

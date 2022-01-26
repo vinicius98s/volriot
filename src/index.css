@@ -6,6 +6,12 @@
   @apply transition font-sans;
 }
 
+html,
+body,
+#root {
+  @apply h-full;
+}
+
 .gutter {
   @apply dark:bg-gray-800 bg-gray-100 bg-no-repeat bg-center;
 }

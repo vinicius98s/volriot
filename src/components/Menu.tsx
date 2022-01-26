@@ -1,13 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { SunIcon, MoonIcon } from "@heroicons/react/outline";
 
-function ThemeButton() {
-  const [theme, setTheme] = useState("light");
+import useTheme from "@/contexts/theme/useTheme";
 
-  const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
-    document.querySelector("html")?.classList.toggle("dark");
-  };
+function ThemeButton() {
+  const { toggleTheme, theme } = useTheme();
 
   return (
     <button
@@ -15,9 +12,9 @@ function ThemeButton() {
       onClick={toggleTheme}
     >
       {theme === "light" ? (
-        <SunIcon className="w-6 h-6 text-gray-400" />
+        <SunIcon className="w-6 h-6 text-white" />
       ) : (
-        <MoonIcon className="w-6 h-6 text-white" />
+        <MoonIcon className="w-6 h-6 text-gray-400" />
       )}
     </button>
   );

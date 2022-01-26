@@ -14,6 +14,9 @@ pub enum Error {
   /// IO error.
   #[error(transparent)]
   Io(#[from] std::io::Error),
+  /// Custom errors
+  #[error("{0}")]
+  Custom(String),
 }
 
 impl Serialize for Error {
