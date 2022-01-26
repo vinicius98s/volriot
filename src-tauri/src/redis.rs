@@ -7,19 +7,24 @@ use ts_rs::TS;
 #[derive(Serialize, Deserialize, Debug, TS)]
 #[ts(export)]
 pub struct RedisConnection {
-  name: String,
+  host: String,
+  port: u16,
+  db: Option<i64>,
+  username: Option<String>,
+  password: Option<String>,
 }
 
 impl IntoConnectionInfo for RedisConnection {
   fn into_connection_info(self) -> RedisResult<ConnectionInfo> {
-    println!("{:?}", self);
-
     Ok(ConnectionInfo {
-      addr: ConnectionAddr::Tcp("127.0.0.1".to_string(), 6379),
+      addr: ConnectionAddr::Tcp(self.host, self.port),
       redis: RedisConnectionInfo {
-        db: 0,
-        username: None,
-        password: None,
+        db: match self.db {
+          Some(database) => database,
+          None => 0,
+        },
+        username: self.username,
+        password: self.password,
       },
     })
   }

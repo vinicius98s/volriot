@@ -1,9 +1,24 @@
 import React from "react";
 import { Props } from "react-modal";
+// import { invoke } from "@tauri-apps/api";
 
 import Modal from "@/components/Modal";
 import Button from "@/components/Button";
 import { Input } from "@/components/Form";
+
+// import { RedisConnection } from "@bindings/RedisConnection";
+
+// const connectionInfo: RedisConnection = {
+//   host: "127.0.0.1",
+//   port: 6379,
+//   db: 0 as unknown as bigint,
+//   username: null,
+//   password: null,
+// };
+
+// invoke("test_connection", { connectionInfo })
+//   .then(console.log)
+//   .catch(console.error);
 
 function Colors() {
   return (
