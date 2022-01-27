@@ -1,7 +1,7 @@
 import React from "react";
 import { SunIcon, MoonIcon } from "@heroicons/react/outline";
 
-import useTheme from "@/contexts/theme/useTheme";
+import useTheme from "@/hooks/useTheme";
 
 function ThemeButton() {
   const { toggleTheme, theme } = useTheme();
@@ -12,9 +12,9 @@ function ThemeButton() {
       onClick={toggleTheme}
     >
       {theme === "light" ? (
-        <SunIcon className="w-6 h-6 text-white" />
+        <SunIcon className="w-6 h-6 text-gray-400" />
       ) : (
-        <MoonIcon className="w-6 h-6 text-gray-400" />
+        <MoonIcon className="w-6 h-6 text-white" />
       )}
     </button>
   );

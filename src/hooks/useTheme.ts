@@ -1,18 +1,9 @@
-import React, { createContext, ReactNode, useEffect } from "react";
+import { useEffect } from "react";
 
 import { Theme } from "@bindings/Theme";
 import useLocalStorage from "@/hooks/useLocalStorage";
 
-type ThemeContext = {
-  theme: Theme;
-  toggleTheme: () => void;
-};
-
-export const ThemeContext = createContext<ThemeContext | null>(null);
-
-type Props = { children: ReactNode };
-
-export default function ThemeContextProvider(props: Props) {
+export default function useTheme() {
   const [theme, setTheme] = useLocalStorage<Theme>("theme", () =>
     window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
   );
@@ -29,9 +20,5 @@ export default function ThemeContextProvider(props: Props) {
 
   const toggleTheme = () => setTheme(theme === "light" ? "dark" : "light");
 
-  return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      {props.children}
-    </ThemeContext.Provider>
-  );
+  return { theme, toggleTheme };
 }
