@@ -1,8 +1,7 @@
-import React, { createContext, ReactNode, useEffect, useState } from "react";
-import { invoke } from "@tauri-apps/api";
+import React, { createContext, ReactNode, useEffect } from "react";
 
-import { UserPreferences } from "@bindings/UserPreferences";
 import { Theme } from "@bindings/Theme";
+import useLocalStorage from "@/hooks/useLocalStorage";
 
 type ThemeContext = {
   theme: Theme;
@@ -13,24 +12,19 @@ export const ThemeContext = createContext<ThemeContext | null>(null);
 
 type Props = { children: ReactNode };
 
-async function savePreferences(preferences: UserPreferences) {
-  await invoke<void>("save_user_preferences", { preferences });
-}
-
 export default function ThemeContextProvider(props: Props) {
-  const [theme, setTheme] = useState<Theme>(() =>
+  const [theme, setTheme] = useLocalStorage<Theme>("theme", () =>
     window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
   );
 
   useEffect(() => {
-    invoke<UserPreferences>("get_user_preferences").then(({ theme }) =>
-      setTheme(theme)
-    );
-  }, []);
+    const html = document.querySelector("html");
 
-  useEffect(() => {
-    document.querySelector("html")?.classList.toggle("dark");
-    savePreferences({ theme });
+    if (theme === "light") {
+      html?.classList.remove("dark");
+    } else {
+      html?.classList.add("dark");
+    }
   }, [theme]);
 
   const toggleTheme = () => setTheme(theme === "light" ? "dark" : "light");
